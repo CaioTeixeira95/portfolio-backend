@@ -6,7 +6,7 @@ from flask import Blueprint, request, jsonify
 from email.mime.text import MIMEText
 
 
-bp_message = Blueprint('message', __name__)
+bp_message = Blueprint('message', __name__, cli_group='other')
 
 
 @bp_message.route('/', methods=['GET'])
