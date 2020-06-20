@@ -139,18 +139,23 @@ def page_not_found(e):
     return "<h1>404</h1><p>The resource could not be found.</p>", 404
 
 
-@bp_message.cli.command('migrate')
+@bp_message.route('/db/migrate/', methods=['POST'])
 def migrate():
-    connection = sqlite3.connect('portfolio.db')
-    cursor = connection.cursor()
-    cursor.execute("""
-        CREATE TABLE message (
-            id INTEGER PRIMARY KEY,
-            name TEXT,
-            email TEXT,
-            message TEXT
-        )
-    """)
-    connection.commit()
-    cursor.close()
-    connection.close()
+    try:
+        connection = sqlite3.connect('portfolio.db')
+        cursor = connection.cursor()
+        cursor.execute("""
+            CREATE TABLE message (
+                id INTEGER PRIMARY KEY,
+                name TEXT,
+                email TEXT,
+                message TEXT
+            )
+        """)
+        connection.commit()
+        cursor.close()
+        connection.close()
+    except Exception:
+        return {'error': 'Error trying to create table.'}
+    
+    return {'message': 'Success'}, 200
