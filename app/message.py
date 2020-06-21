@@ -66,7 +66,6 @@ def register():
     try:
         connection = sqlite3.connect('portfolio.db')
         cursor = connection.cursor()
-        print("Successfully Connected to SQLite")
 
         cursor.execute("""
             INSERT INTO message
@@ -96,7 +95,7 @@ def register():
         De: {name} - {email}
         """
         message = MIMEText(text)
-        message['subject'] = 'portfolio message'
+        message['subject'] = 'Mensagem do Portfolio'
         message['from'] = from_addr
         message['to'] = ', '.join(to_addrs)
 
