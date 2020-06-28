@@ -11,6 +11,7 @@ Flask-cors = "*"
 Flask-mail = "*"
 Flask-Sqlalchemy = "*"
 Flask-migrate = "*"
+gunicorn = "*"
 
 [requires]
 
