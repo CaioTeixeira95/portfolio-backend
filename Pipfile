@@ -9,6 +9,8 @@ verify_ssl = true
 Flask = "*"
 Flask-cors = "*"
 Flask-mail = "*"
+Flask-Sqlalchemy = "*"
+Flask-migrate = "*"
 
 [requires]
 
