@@ -4,9 +4,11 @@ from flask import Blueprint, request, jsonify, escape
 from flask_mail import Message as MessageMail
 
 from model.message import Message
-from app import db, mail
+from ext.database import db
+from ext.mail import mail
 
-bp_message = Blueprint('message', __name__, cli_group='other')
+
+bp_message = Blueprint('message', __name__)
 
 
 @bp_message.route('/', methods=['GET'])
